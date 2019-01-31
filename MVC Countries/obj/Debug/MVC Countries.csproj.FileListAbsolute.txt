@@ -1,0 +1,7 @@
+C:\git\MVC Countries\MVC Countries\bin\Debug\MVC Countries.exe.config
+C:\git\MVC Countries\MVC Countries\bin\Debug\MVC Countries.exe
+C:\git\MVC Countries\MVC Countries\bin\Debug\MVC Countries.pdb
+C:\git\MVC Countries\MVC Countries\obj\Debug\MVC Countries.csprojAssemblyReference.cache
+C:\git\MVC Countries\MVC Countries\obj\Debug\MVC Countries.csproj.CoreCompileInputs.cache
+C:\git\MVC Countries\MVC Countries\obj\Debug\MVC Countries.exe
+C:\git\MVC Countries\MVC Countries\obj\Debug\MVC Countries.pdb
