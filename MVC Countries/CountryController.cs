@@ -10,72 +10,91 @@ namespace MVC_Countries
     {
         Viewer view = new Viewer();
         public int index;
+        public bool run = true;
+
         public void CountryMenu()
         {
-            view.Continent();
-            int.TryParse(Console.ReadLine(), out int input);
-            List<Country> countries;
 
-            if (input == 1)
+
+            do
             {
-                NorthAmerica na = new NorthAmerica();
-                countries = na.Countries;
-                int num = 1;
-                foreach (Country c in countries)
+                view.Continent();
+                int.TryParse(Console.ReadLine(), out int input);
+
+                List<Country> countries;
+
+                if (input == 1)
                 {
-                    //view.CountryList(c);
-                    
-                    Console.WriteLine($"{num}: {c.Name}");
-                    num++;
+                    NorthAmerica na = new NorthAmerica();
+                    countries = na.Countries;
+
+                    int num = 1;
+                    foreach (Country c in countries)
+                    {
+                        view.CountryList(c, num);
+                        num++;
+                    }
+
+                    do
+                    {
+                        view.CountrySelect();
+                        int.TryParse(Console.ReadLine(), out index);
+
+                        if (index > 0 && index <= 5)
+                        {
+                            Country c = countries[index - 1];
+                            CountryDetails(c);
+                            run = false;
+                            break;
+                        }
+                        else
+                        {
+                            view.Error();
+                        }
+                    } while (run == true);
+
                 }
-
-                bool run = true;
-
-                do
+                else if (input == 2)
                 {
-                    //view.CountrySelectNA(index);
-                    Console.Write("Select a country: ");
-                    int.TryParse(Console.ReadLine(), out index);
-                    if (index > 0 && index <= 5)
-                    {
-                        Country c = countries[index-1];
-                        CountryDetails(c);
-                        break;
-                    }
-                    else
-                    {
-                        view.Error();
-                    }
-                } while (run == true);
+                    Asia a = new Asia();
+                    countries = a.Countries;
 
-            }
-            else
-            {
-                Asia a = new Asia();
-                countries = a.Countries;
-                int num = 1;
-                foreach (Country c in countries)
-                {
-                    Console.WriteLine($"{num}: {c.Name}");
-                    num++;
+                    int num = 1;
+                    foreach (Country c in countries)
+                    {
+                        view.CountryList(c, num);
+                        num++;
+                    }
+
+                    do
+                    {
+                        view.CountrySelect();
+                        int.TryParse(Console.ReadLine(), out int index);
+
+                        if (index > 0 && index <= 5)
+                        {
+                            Country c = countries[index - 1];
+                            CountryDetails(c);
+                            run = false;
+                            break;
+                        }
+                        else
+                        {
+                            view.Error();
+                        }
+                    } while (run == true);
                 }
-                bool run = true;
-                do
+                else if (input != 1 || input != 2)
                 {
-                    Console.Write("Select a country: ");
-                    int.TryParse(Console.ReadLine(), out int index);
-                    if (index > 0 && index <= 5)
-                    {
-                        Country c = countries[index - 1];
-                        CountryDetails(c);
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid Input. Try Again");
-                    }
-                } while (run == true);
-            }
+                    view.Error();
+                    run = true;
+                }
+                else
+                {
+                    run = false;
+                    break;
+                }
+            } while (run == true);
         }
 
         public void CountryDetails(Country c)

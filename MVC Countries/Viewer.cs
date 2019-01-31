@@ -8,24 +8,23 @@ namespace MVC_Countries
 {
     class Viewer
     {
+        //int num = 1;
         public void Continent()
         {
             Console.WriteLine("***** CONTINENTS ******");
             Console.WriteLine("1:) North America");
             Console.WriteLine("2:) Asia");
+            Console.Write("Select a continent: ");
+            
         }
-        public void CountryList(Country c)
+        public void CountryList(Country c, int num)
         {
-            int num = 1;
-            Console.WriteLine($"{num}: {c.Name}");
-            num++;
+            Console.WriteLine($"{num}: {c.Name}");            
         }
 
-        public int CountrySelectNA(int index)
-        {
+        public void CountrySelect()
+        {            
             Console.Write("Select a country: ");
-            int.TryParse(Console.ReadLine(), out index);
-            return index - 1;
         }
 
         public void Error()
